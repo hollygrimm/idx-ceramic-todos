@@ -1,0 +1,69 @@
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="center start" >
+    <mat-card fxFlex.lt-lg="100%" fxFlex.lg="75%" fxFlex.gt-lg="51%">
+        <form [formGroup]="frmGroup" ngNativeValidate>
+          <mat-card-header>
+            <mat-card-title>Create Task</mat-card-title>
+          </mat-card-header>
+          <mat-card-content fxLayout="column">
+            
+            <mat-form-field>
+                <input matInput placeholder="Title" formControlName="title" autofocus>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Text" formControlName="text" autofocus>
+            </mat-form-field>    
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>           
+    
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="addDoc()" [disabled]="!frmGroup.valid">
+                  <mat-icon matPrefix aria-hidden="false" aria-label="email">play_arrow</mat-icon> Create
+              </button>
+          </mat-card-actions>
+        </form>
+    </mat-card>
+
+    <mat-card fxFlex.lt-lg="100%" fxFlex.lg="75%" fxFlex.gt-lg="51%">
+      <mat-card-header>
+        <mat-card-title>Tasks</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-table [dataSource]="this.tasks$">
+        
+            <ng-container matColumnDef="title">
+                <mat-header-cell fxFlex="35%" *matHeaderCellDef >Title</mat-header-cell>
+                <mat-cell fxFlex="35%" fxLayoutAlign="start start" *matCellDef="let row"> {{row.title}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="text">
+                <mat-header-cell fxFlex="35%" *matHeaderCellDef>Text</mat-header-cell>
+                <mat-cell fxFlex="35%" fxLayoutAlign="start start" *matCellDef="let row">{{row.text}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <mat-header-cell fxFlex="20%" fxFlex.lt-md="70px" fxFlex.lt-lg="100px" fxLayoutAlign="center center" *matHeaderCellDef><mat-icon>calendar_today</mat-icon>&nbsp;Date</mat-header-cell>
+                <mat-cell fxFlex="20%" fxFlex.lt-md="70px" fxFlex.lt-lg="100px" fxLayoutAlign="start start" *matCellDef="let row">{{row.date | date:'yy-MM-dd HH:mm'}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="completed">
+                <mat-header-cell fxFlex="10%" *matHeaderCellDef fxLayoutAlign="center center">Completed</mat-header-cell>
+                <mat-checkbox fxFlex="10%" [checked]="row.completed" (click)="updateTask(row)" fxLayoutAlign="center center" *matCellDef="let row">
+                </mat-checkbox>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns" fxLayoutGap="7px"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" fxLayoutGap="7px" fxLayoutAlign="start start"></mat-row>
+        </mat-table>
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>

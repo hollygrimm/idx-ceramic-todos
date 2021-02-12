@@ -1,0 +1,47 @@
+<div *ngIf="{co: idxConnected$ | async, did: did$ | async, profile: profile$ | async} as o" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxFlex.lt-lg="100%" fxFlex.lg="75%" fxFlex.gt-lg="51%">
+    <mat-card-header>
+      <mat-card-title>Welcome</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutGap="50px">
+      <h3>
+This todo application authenticates using your wallet and securely stores the todos you create on the open internet. This app uses the <a style="color: rgb(170, 116, 221)"  href="https://ceramic.network/">Ceramic Network</a> and is currently connected to the Clay testnet. This process uses no gas!
+      </h3>
+      <div fxLayout="row">
+        <div *ngIf="!o.co" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center start">
+          <button mat-raised-button class='margin-top-bottom--12' color="primary" (click)="onConnect()">
+            Authenticate
+          </button>
+          <h3>to the Ceramic Network with your wallet to continue.</h3>
+        </div>
+        <div *ngIf="o.co">
+          <h3 *ngIf="o.profile != null">
+            Excellent, {{o.profile.name}}! We have found your user profile on the Clay testnet of the Ceramic Network. You can update your name below.
+          </h3>
+          <h3 *ngIf="o.profile == null">
+            Excellent! We didn't find a user profile on the Clay testnet of the Ceramic Network. Update your name below!
+          </h3>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card *ngIf="o.co" fxFlex.lt-lg="100%" fxFlex.lg="75%" fxFlex.gt-lg="51%">
+    <form [formGroup]="profileForm" ngNativeValidate>
+      <mat-card-header>
+        <mat-card-title>Update Profile</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column">
+        <mat-form-field style="width:300px">
+          <input matInput  placeholder="Name" formControlName="name" autofocus>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="updateProfile()" [disabled]="!profileForm.valid">
+              <mat-icon matPrefix aria-hidden="false" aria-label="email">play_arrow</mat-icon>
+          </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
