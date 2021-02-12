@@ -1,6 +1,8 @@
 # IDX Ceramic Todos
 
-Submission to EthDenver 2021 Hackathon
+Submission to ETHDenver 2021 Hackathon
+
+An application that uses a decentralized database on the Ceramic Network to securely store smart documents (todos). It’s a serverless application that ties secure smart documents to a user identity anchored on the Ethereum blockchain.
 
 Special thanks to the IDX and Ceramic developers and to all of EthDenver for a great experience!
 
