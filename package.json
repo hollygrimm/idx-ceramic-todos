@@ -42,7 +42,7 @@
     "authereum": "^0.1.0",
     "dids": "^1.1.1",
     "fortmatic": "^2.2.1",
-    "rxjs": "^7.0.0-beta.3",
+    "rxjs": "^6.5.3",
     "serialize-error": "^8.0.1",
     "tslib": "^2.0.0",
     "web3modal": "^1.9.3",
