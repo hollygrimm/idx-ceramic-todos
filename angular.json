@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ceramic-todos": {
+    "idx-ceramic-todos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
             "customWebpackConfig": {
               "path": "./custom-webpack.config.js"
             },                    
-            "outputPath": "dist/ceramic-todos",
+            "outputPath": "dist/idx-ceramic-todos",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "ceramic-todos:build"
+            "browserTarget": "idx-ceramic-todos:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ceramic-todos:build:production"
+              "browserTarget": "idx-ceramic-todos:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ceramic-todos:build"
+            "browserTarget": "idx-ceramic-todos:build"
           }
         },
         "test": {
@@ -121,16 +121,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ceramic-todos:serve"
+            "devServerTarget": "idx-ceramic-todos:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ceramic-todos:serve:production"
+              "devServerTarget": "idx-ceramic-todos:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ceramic-todos"
+  "defaultProject": "idx-ceramic-todos"
 }
