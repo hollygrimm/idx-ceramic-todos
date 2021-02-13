@@ -10,7 +10,7 @@ export interface State extends EntityState<TaskWrapperModel> {
 }
 
 export const adapter: EntityAdapter<TaskWrapperModel> = createEntityAdapter<TaskWrapperModel>({
-  selectId: (task: TaskWrapperModel) => task.id.substring(9),
+  selectId: (task: TaskWrapperModel) => task.id,
 });
 
 export const initialState: State = adapter.getInitialState({

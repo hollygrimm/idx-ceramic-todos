@@ -4,28 +4,20 @@ https://blog.ceramic.network/how-to-build-a-simple-notes-app-with-idx/
 
 # Install NPM, Create Angular Project with ngrx, material, flex-layout
 
-## Downgrade NPM
-breaking change on Feb 2 https://github.com/angular/angular-cli/issues/19957#issuecomment-773569798  will be fixed...
-```
-npm install --global npm@6
-```
-
 create angular project:
 ```
-ng new ceramic-todos
+ng new idx-ceramic-todos
   NO stricter type checking angularCompilerOptions
   angular routing
   SCSS
 ```
 ```
-cd ceramic-todos
+cd idx-ceramic-todos
 ```
-
 add ngrx:
 ```
-npm i -—save @ngrx/store@latest @ngrx/effects@latest @ngrx/store-devtools@latest @ngrx/router-store@latest @ngrx/entity@latest --legacy-peer-deps
+npm i -—save @ngrx/store@latest @ngrx/effects@latest @ngrx/store-devtools@latest @ngrx/router-store@latest @ngrx/entity@latest
 ```
-
 add layout:
 ```
 ng add @angular/material
@@ -36,11 +28,6 @@ npm i serialize-error
 add custom webpack for crypto
 ```
 npm i @angular-builders/custom-webpack
-```
-
-add support for asynciterator with rxjs
-```
-npm install ix
 ```
 
 ## Install Ceramic Studio Tools
