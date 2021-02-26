@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import * as fromContainers from './containers';
 
-import * as guards from './guards';
+import * as guards from '../guards';
 
 const routes: Routes = [
   {

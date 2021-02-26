@@ -45,7 +45,7 @@ export class TaskEffects {
     this.actions$.pipe(
       ofType(TaskActions.createTaskSuccess),
       switchMap(action => from(this.taskSrv.appendTask(action.task))),
-      tap(id => console.log(`Updating Task id: ${id}`)),
+      // tap(id => console.log(`Updating Task id: ${id}`)),
       map((taskList) => {
         return TaskActions.appendCreatedTaskSuccess({ tasks: taskList });
       }),

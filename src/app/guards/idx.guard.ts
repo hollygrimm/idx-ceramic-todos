@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, CanLoad, Route, UrlSegment, UrlTree } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { take, tap, filter, switchMap, catchError } from 'rxjs/operators';
-import * as fromRoot from '../../core/store';
+import { take, tap } from 'rxjs/operators';
+import * as fromRoot from '../core/store';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IdxConnectGuard implements CanActivate {
+export class IdxConnectGuard implements CanActivate, CanLoad {
   constructor(private store: Store<fromRoot.AppState>) { }
 
+  canLoad(): Observable<boolean> {
+    return this.can();
+  }
+
   canActivate(): Observable<boolean> {
+    return this.can();
+  }
+
+  can(): Observable<boolean> {
     return this.store.pipe(
       select(fromRoot.getIdxConnected),
       tap(connected => {
@@ -25,6 +33,5 @@ export class IdxConnectGuard implements CanActivate {
       take(1)
     );
   }
-
 
 }

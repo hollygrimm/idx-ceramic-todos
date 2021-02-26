@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './core/components/home/home.component';
+import * as guards from './guards';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   {
     path: 'tasks',
     loadChildren: () => import('./tasks/tasks.module').then(value => value.TasksModule),
-    // FIXME: canLoad: [guards.IdxConnectGuard]
+    canLoad: [guards.IdxConnectGuard],
   },
 ];
 
