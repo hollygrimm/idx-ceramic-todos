@@ -7,7 +7,7 @@ import type { DIDProvider } from 'dids'
 import Authereum from 'authereum'
 import Fortmatic from 'fortmatic'
 import Web3Modal from 'web3modal'
-import WalletConnectProvider from '@walletconnect/web3-provider'
+import WalletConnectProvider from '@walletconnect/3id-provider'
 import { ThreeIdConnect, EthereumAuthProvider } from '3id-connect'
 
 import { definitions } from '../../../config.json';
